@@ -1,9 +1,6 @@
 class PostsController < ApplicationController
   def index
     @posts = fetch_from_redis
-    respond_to do |format|
-      format.json { render json: @posts, status: :ok }
-    end
   end
 
   private
@@ -13,6 +10,7 @@ class PostsController < ApplicationController
       if posts.nil?
         posts = Post.includes(:user).all.to_json
         $redis.set "posts", posts
+        $redis.expire("posts",3.hour.to_i)
       end
       JSON.load posts
     end

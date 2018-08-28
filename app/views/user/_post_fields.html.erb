@@ -1,0 +1,16 @@
+<div class='fields'>
+  <h3>post</h3>
+  <div class='field'>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class='field'>
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+  </div>
+
+  <%= f.hidden_field :_destroy %>
+  <%= link_to "[Remove post]", '#',
+    onClick: "removeField(this); return false;" %>
+</div>

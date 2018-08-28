@@ -1,0 +1,10 @@
+<%= form_for @user do |f| %>
+  <div>
+    <%= f.fields_for :posts do |task_form| %>
+      <%= render "post_fields", f: task_form %>
+    <% end %>
+  </div>
+  <%= link_to_add_fields("Add post", f, :posts) %>
+  <%= f.submit "Save", method: :update,
+    data: {confirm: "Are you sure"} %>
+<% end %>
