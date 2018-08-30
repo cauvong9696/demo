@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def index
-    @posts = fetch_from_redis
+    # @posts = fetch_from_redis
+    @posts = Post.all
   end
 
   private
